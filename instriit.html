@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<title>Tutoriel Google Maps</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<!-- Elément Google Maps indiquant que la carte doit être affiché en plein écran et
+		qu'elle ne peut pas être redimensionnée par l'utilisateur -->
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<!-- Inclusion de l'API Google MAPS -->
+		<!-- Le paramètre "sensor" indique si cette application utilise détecteur pour déterminer la position de l'utilisateur -->
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+		<script type="text/javascript">
+		function map_leaft()
+		{
+		var map = L.map('carte').setView([48.8592, 2.3417], 13);
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+		attribution: 'mapbox://styles/huchetmap/cihdgkp4600j5bwm5yyo3jr0q',
+			Zoom: 10,
+			id: 'mapbox.mapbox-streets-v6',
+			accessToken: 'pk.eyJ1IjoiaHVjaGV0bWFwIiwiYSI6ImNpaGRnOXUwejAwMXp1Mm00M28zb3JtbWUifQ.o8ZoDxmnBANxWlVeaTFhUA'
+		}).addTo(map);
+		var marker = L.marker([48.8592, 2.3417]).addTo(map);
+		function onMapClick(e)
+		{
+			var marker = L.marker([e.latlng.lat,e.latlng.lng]).addTo(map);
+			marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+		}
+		map.on("click", onMapClick);
+		}
+		</script>
+		<style>
+			  html, body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			  }
+			  #map {
+				height: 100%;
+			  }
+		#floating-panel {
+		  position: absolute;
+		  top: 10px;
+		  left: 25%;
+		  z-index: 5;
+		  background-color: #fff;
+		  padding: 5px;
+		  border: 1px solid #999;
+		  text-align: center;
+		  font-family: 'Roboto','sans-serif';
+		  line-height: 30px;
+		  padding-left: 10px;
+		}
+
+    </style>
+	</head>
+	<body onload="map_leaft()">
+		<div id="carte" style="width:100%; height:100%"></div>
+	</body>
+</html>
