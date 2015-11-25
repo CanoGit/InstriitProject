@@ -1,0 +1,38 @@
+"persons":[
+	"person":{
+	"firstName":"Paul",
+	"lastName":"Paulin",
+	"age":26,
+	"famiStatu":"Célibataire",
+	"lngLat":"",
+	"addr":"13 rue de Paris, 75010 Paris",
+	"interetCenter":[
+	"foot",
+	"music",
+	"dance"],
+	},
+	"person":{
+	"firstName":"Marie",
+	"lastName":"Clavier",
+	"age":32,
+	"famiStatu":"Mariée",
+	"lngLat":"",
+	"addr":"12 rue Jean Moulin, 75011 Paris",
+	"interetCenter":[
+	"fête",
+	"peche",
+	"promenade"],
+	},
+	"person":{
+	"firstName":"Matthieu",
+	"lastName":"Bato",
+	"age":55,
+	"famiStatu":"Marié",
+	"lngLat":"",
+	"addr":"9 rue du savetier, 75017 Paris",
+	"interetCenter":[
+	"course hippique",
+	"animaux",
+	"voiture"],
+	}
+]
