@@ -23,8 +23,8 @@ function	data()
 				{
 				"firstName":"Marie",
 				"lastName":"Clavier",
-				"age":32,
-				"famiStatu":"Mariée",
+				"age": 28,
+				"famiStatu":"Célibataire",
 				"lngLat":"",
 				"addr":"12 rue Jean Moulin, 75011 Paris",
 				"interetCenter":[
@@ -191,7 +191,7 @@ function	score_pos()
 function	score_int()
 {
 	var content = data();
-	var score = 0;
+	var score = "";
 	var y = 1;
 	for (var i = 0; content.persons[0].interetCenter[i] != undefined; i++)
 	{
@@ -201,14 +201,15 @@ function	score_int()
 			for (var j = 0; content.persons[u].interetCenter[j] != undefined; j++)
 			{
 				critere_int = content.persons[u].interetCenter[j];
+				age_at = content.persons[u].age;
+				age_cp_1 = age_at - 2;
+				age_cp_2 = age_at + 2;
 				if (centre_int_pers == critere_int)
 				{
-					if (content.persons[u].famiStatu == content.persons[0].famiStatu)
-					{
-						y = 0;
+					if (content.persons[0].age <= age_cp_2 && content.persons[0].age >= age_cp_1 && content.persons[u].famiStatu == content.persons[0].famiStatu)
 						score = "" + content.persons[u].firstName + " " + content.persons[u].lastName + " de " + content.persons[u].age + " ans.</br> A le meme centre d'interet que vous, '" + content.persons[u].interetCenter[j] + "'.</br>Aux " + content.persons[u].addr + ".";
-						break;
-					}
+					y = 0;
+					break;
 				}
 			}
 		}
