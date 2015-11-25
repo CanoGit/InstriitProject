@@ -1,5 +1,6 @@
+{
 "persons":[
-	"person":{
+	{
 	"firstName":"Paul",
 	"lastName":"Paulin",
 	"age":26,
@@ -9,9 +10,9 @@
 	"interetCenter":[
 	"foot",
 	"music",
-	"dance"],
+	"dance"]
 	},
-	"person":{
+	{
 	"firstName":"Marie",
 	"lastName":"Clavier",
 	"age":32,
@@ -21,9 +22,9 @@
 	"interetCenter":[
 	"fête",
 	"peche",
-	"promenade"],
+	"promenade"]
 	},
-	"person":{
+	{
 	"firstName":"Matthieu",
 	"lastName":"Bato",
 	"age":55,
@@ -33,6 +34,6 @@
 	"interetCenter":[
 	"course hippique",
 	"animaux",
-	"voiture"],
+	"voiture"]
 	}
-]
+]}
