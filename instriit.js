@@ -168,7 +168,8 @@ function	data()
 					"add": "10 rue lilas",
 					"lng":"48.806101",
 					"lat":"2.583785",
-					"type": "Jeux"
+					"type": "Jeux",
+					"img": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Allee_Parc_Laurier.JPG"
 				},
 				{
 					"name" : "Robert Shuman",
@@ -213,7 +214,7 @@ function	score_pos()
 	for (var i = 0; content.persons[0].critere[i] != undefined; i++)
 	{
 		critere_choix = content.persons[0].critere[i];
-		for (var j = 0; content.pos.critere_pos[j].type != undefined; j++)
+		for (var j = 0; content.pos.critere_pos[j] != undefined; j++)
 		{
 			critere_pos = content.pos.critere_pos[j].type;
 			if (critere_pos == critere_choix)
@@ -288,6 +289,7 @@ function CheckPersons(dataPers, map)
 	for (var i = 1; i < dataPers.length; i++)
 	{
 		marker = L.marker([dataPers[i].lng,dataPers[i].lat], {icon: myIcon}).addTo(map);
+		getPopupPer(marker, dataPers[i]);
 		marker.on("click", onPClick);
 	}
 }
@@ -309,12 +311,33 @@ function CheckPOI(dataPOI, map)
 				});
 				//alert(dataPOI[dataPOI.critere_pos[i]][j].lat);
 				var marker = L.marker([dataPOI[dataPOI.critere_pos[i].type][j].lng, dataPOI[dataPOI.critere_pos[i].type][j].lat], {icon: myIcon}).addTo(map);
+				getPopupPOI(marker, dataPOI[dataPOI.critere_pos[i].type][j]);
 				marker.on("click", onPOIClick);
 			}
 	}
 }
 
 var info = 0;
+
+function	getPopupPOI(POIMarker, POIData)
+{
+	var PopCont = "<div class='poi'>Name: " + POIData.name + "<br>"
+	if (POIData.img != undefined)
+		PopCont += "<img src='" + POIData.img + "' height=10%/></br>"
+	PopCont += 	"<button> Cliquer pour + d'info !:)</button>" +
+	"<div id='toto' style='display: none'>" + info + "</div>";
+	POIMarker.bindPopup(PopCont);
+}
+
+function	getPopupPer(PerMarker, PerData)
+{
+	var PopCont = "<div class='poi'>Name: " + PerData.name + "<br>"
+	if (PerData.img != undefined)
+		PopCont += "<img src='" + PerData.img + "' height=10%/></br>"
+	PopCont += 	"<button> Cliquer pour + d'info !:)</button>" +
+	"<div id='toto' style='display: none'>" + info + "</div>";
+	PerMarker.bindPopup(PopCont);
+}
 
 function	aff_div()
 {
@@ -347,7 +370,7 @@ function	New_info()
 	for (var i = 0; content.persons[0].critere[i] != undefined; i++)
 	{
 		critere_choix = content.persons[0].critere[i];
-		for (var j = 0; content.pos.critere_pos[j].type != undefined; j++)
+		for (var j = 0; content.pos.critere_pos[j] != undefined; j++)
 		{
 			critere_pos = content.pos.critere_pos[j].type;
 			if (critere_pos == critere_choix)
@@ -388,7 +411,26 @@ function onPClick(e)
 
 function onContClick(e)
 {
-	alert("User");
+	var score_position = score_pos();
+	var score_interet = score_int();
+	if (!this.getPopup())
+	{
+		var info = New_info();
+		var Popuptot = "<div class='poi'>First Name: The_Name<br>Last Name: The_LName<br>" +
+		"<img src='https://image.freepik.com/photos-libre/smiley_21108723.jpg' height=10%/></br>" +
+		"<p>Critere : "+ score_position +"/10</p>" + 
+		"<div id='toto1' style='display: block;'> Cliquer pour + d'info !:)</div>" +
+		"<div id='toto' style='display: none'>" + info + "</div>" +
+		"<p>"+ score_interet +"</p></div>";
+		this.bindPopup(Popuptot).openPopup();
+		this.on('click',aff_div)
+	}
+	else
+	{
+		var the_pop = this.getPopup();
+		this.unbindPopup();
+		this.bindPopup(the_pop).openPopup();
+	}
 }
 
 function onPOIClick(e)
