@@ -4,7 +4,7 @@
 				"firstName":"Paul",
 				"lastName":"Paulin",
 				"age":26,
-				"famiStatu":"Célibataire",
+				"famiStatu":"Celibataire",
 				"lng":"48.804094",
 				"lat":"2.604160",
 				"addr":"13 rue de Paris, 75010 Paris",
@@ -23,12 +23,12 @@
 				"firstName":"Marie",
 				"lastName":"Clavier",
 				"age":32,
-				"famiStatu":"Mariée",
+				"famiStatu":"Mariee",
 				"lng":"48.804456",
 				"lat":"2.588451",
 				"addr":"12 rue Jean Moulin, 75011 Paris",
 				"interetCenter":[
-				"fête",
+				"fÃƒÂªte",
 				"foot",
 				"promenade"]
 				},
@@ -36,7 +36,7 @@
 				"firstName":"Matthieu",
 				"lastName":"Bato",
 				"age":55,
-				"famiStatu":"Marié",
+				"famiStatu":"Mariee",
 				"lng":"48.807543",
 				"lat":"2.598275",
 				"addr":"9 rue du savetier, 75017 Paris",
@@ -60,108 +60,144 @@
 			],
 			"bar":[
 					{
-					"name" : "le sentinel",
-					"add": "", 
-					"type": "soul"
+					"name" : "Bellevue",
+					"add": "",
+					"lng":"48.806475",
+					"lat":"2.616720",
+					"type": "Bar"
 					},
 					{
-					"name" : "la gaite",
+					"name" : "Cafe de la gare",
 					"add": "",
-					"type": "soul"
+					"lng":"48.805883",
+					"lat":"2.617624",
+					"type": "Cafe"
 					
 					},
 					{
-					"name" : "le patio",
+					"name" : "Cosmic Lazer",
 					"add": "",
-					"type": "soul"
+					"lng":"48.777166",
+					"lat":"2.592688",
+					"type": "Boite de nuit"
 					}
 				],
 			"restaurant": [
 						{
-						"name": "le lyonnais",
+						"name": "Dominos",
 						"add": "",
-						"type": "bouchon lyonnais"
+						"lng":"48.795793",
+						"lat":"2.604273",
+						"type": "Pizzeria"
 						},
 						{
-						"name": "le limousin",
+						"name": "Val Aoste",
 						"add": "",
+						"lng":"48.796135",
+						"lat":"2.604614",
 						"type": "Cuisine francaise"
 						},
 						{
-						"name": "Aux turc",
+						"name": "Terra Latino",
 						"add": "",
-						"type": "specialités Grec"
+						"lng":"48.793211",
+						"lat":"2.608428",
+						"type": "Specialiter latino"
 						}
 					],
 			"service_public": {
 					"commisariat":[ {
-						"name" : "com",
+						"name" : "Commisariat",
 						"add": "centre ville",
-						"type": "municipal"
+						"lng":"48.799030",
+						"lat":"2.605287",
+						"type": "Municipal"
 						}
 					],
 					"poste": [ {
-						"name" : "composte",
+						"name" : "Poste",
 						"add": "centre ville",
-						"type": "poste"}
+						"lng":"48.798454",
+						"lat":"2.605381",
+						"type": "poste"} 
 					],
 					"banque":[
 						{
-						"name" : "populaire",
+						"name" : "BNP",
 						"add": "centre ville",
-						"type": "distrubuteur"
+						"lng":"48.799826",
+						"lat":"2.607167",
+						"type": "Agence"
 						},
 						{
-							"name" : "caiseepargne",
+							"name" : "Credit Mutuel",
 							"add": "centre ville",
-							"type": "agence"
+							"lng":"48.799290",
+							"lat":"2.606436",
+							"type": "Agence"
 						}
 					],
 					"mairie":[{
-						"name" : "marie11",
+						"name" : "Mairie",
+						"lng":"48.801447",
+						"lat":"2.607751",
 						"add": "centre ville",
-						"type": "quartier"}
+						"type": "ville"}
 					]
 				},
 			"ecole": [
 					{
-						"name" : "etna",
-						"add": "RER",
-						"type": "ingenieur"
+						"name" : "Jean Moulin",
+						"add": "",
+						"lng":"48.806978",
+						"lat":"2.583972",
+						"type": "Primaire"
 					},
 					{
-						"name" : "coudoin",
+						"name" : "Concordet",
 						"add": "10 rue des follie",
-						"type": "maternelle"
+						"lng":"48.802145",
+						"lat":"2.620013",
+						"type": "College"
 					}
 				],
 			"parc": [
 				{
-					"name" : "mariecu",
+					"name" : "De Gaulle",
 					"add": "10 rue lilas",
+					"lng":"48.806101",
+					"lat":"2.583785",
 					"type": "jeux"
 				},
 				{
-					"name" : "cumarie",
+					"name" : "Robert Shuman",
 					"add": "11 rue lilas",
+					"lng":"48.803938",
+					"lat":"2.583020",
 					"type": "espace vert"
 				}
 			],
 			"epicerie": [
 				{
-					"name" : "baguepi",
+					"name" : "Intermarché",
 					"add": "10 rue lilas",
-					"type": "boulangerie"
+					"lng":"48.807689",
+					"lat":"2.617723",
+					"type": "super marché"
 				},
 				{
-					"name" : "bonmarche",
+					"name" : "Simply Market",
 					"add": "11 rue lilas",
-					"type": "epicerie"
+					"lng":"48.805831",
+					"lat":"2.586013",
+					"type": "Epicerie"
 				},
 				{
-					"name" : "carreefourmarket",
+					"name" : "Carrefour Market",
 					"add": "12 rue lilas",
-					"type": "epicerie"
+					"lng":"48.799470",
+					"lat":"2.607406",
+					"type": "Epicerie"
 				}
 			]
 		}
