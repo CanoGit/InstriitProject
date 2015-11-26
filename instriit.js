@@ -390,4 +390,9 @@ function onContClick(e)
 {
 	alert("User");
 }
+
+function onPOIClick(e)
+{
+	alert("POI");
+}
 }
