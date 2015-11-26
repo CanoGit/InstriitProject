@@ -6,7 +6,7 @@ function	data()
 				"firstName":"Paul",
 				"lastName":"Paulin",
 				"age":26,
-				"famiStatu":"CÃƒÂ©libataire",
+				"famiStatu":"Celibataire",
 				"lng":"48.804094",
 				"lat":"2.604160",
 				"addr":"13 rue de Paris, 75010 Paris",
@@ -25,12 +25,12 @@ function	data()
 				"firstName":"Marie",
 				"lastName":"Clavier",
 				"age":32,
-				"famiStatu":"MariÃƒÂ©e",
+				"famiStatu":"Marie",
 				"lng":"48.804456",
 				"lat":"2.588451",
 				"addr":"12 rue Jean Moulin, 75011 Paris",
 				"interetCenter":[
-				"fÃƒÂªte",
+				"fÃªte",
 				"foot",
 				"promenade"]
 				},
@@ -38,7 +38,7 @@ function	data()
 				"firstName":"Matthieu",
 				"lastName":"Bato",
 				"age":55,
-				"famiStatu":"MariÃƒÂ©",
+				"famiStatu":"Marie",
 				"lng":"48.807543",
 				"lat":"2.598275",
 				"addr":"9 rue du savetier, 75017 Paris",
@@ -92,7 +92,7 @@ function	data()
 						{
 						"name": "Aux turc",
 						"add": "",
-						"type": "specialitÃƒÂ©s Grec"
+						"type":"SpecialitÃ©es turc"
 						}
 					],
 			"service_public": {
@@ -223,35 +223,47 @@ function	score_int()
 function map_leaft()
 {
 	var content = data();
-	var map = L.map('carte').setView([content.persons[0].lng,content.persons[0].lat], 13);
+	var map = L.map('carte').setView([content.persons[0].lng,content.persons[0].lat], 14);
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
 	{
 		attribution: 'mapbox://styles/huchetmap/cihdgkp4600j5bwm5yyo3jr0q',
 		Zoom: 10,
 		id: 'mapbox.mapbox-streets-v6',
 		accessToken: 'pk.eyJ1IjoiaHVjaGV0bWFwIiwiYSI6ImNpaGRnOXUwejAwMXp1Mm00M28zb3JtbWUifQ.o8ZoDxmnBANxWlVeaTFhUA'
-		}).addTo(map);
-	map.on("click", onMapClick);
+	}).addTo(map);
+	CheckPersons(content.persons, map);
 
-function onMapClick(e)
+function CheckPersons(dataPers, map)
 {
-	var marker = L.marker([e.latlng.lat,e.latlng.lng]).addTo(map);
-	marker.on("click", onMClick);
+	var myIcon = L.icon({
+    iconUrl: 'https://cdn3.iconfinder.com/data/icons/ballicons-free/128/man.png',
+    iconSize: [38, 38],
+    iconAnchor: [19, 38],
+    popupAnchor: [-3, -76]
+});
+	var ContIcon = L.icon({
+    iconUrl: 'https://cdn2.iconfinder.com/data/icons/arrows-free/32/down_nav_arrow_point-128.png',
+    iconSize: [38, 38],
+    iconAnchor: [19, 38],
+    popupAnchor: [-3, -76]
+});
+	var marker = L.marker([dataPers[0].lng,dataPers[0].lat], {icon: ContIcon}).addTo(map);
+		marker.on("click", onContClick);
+	for (var i = 1; i < dataPers.length; i++)
+	{
+		marker = L.marker([dataPers[i].lng,dataPers[i].lat], {icon: myIcon}).addTo(map);
+		marker.on("click", onPClick);
+	}
 }
 
 var nb = 0;
 
-function onMClick(e)
+function onPClick(e)
 {
-	alert(this.getLatLng().lat + " , " + this.getLatLng().lng);
-	/*if (!this.getPopup())
-||||||| .r12
-	if (!this.getPopup())
-=======
+	alert("Person");
 	var score_position = score_pos();
 	var score_interet = score_int();
 	if (!this.getPopup())
->>>>>>> .r14
 	{
 		this.bindPopup("<div class='poi'>Popup[" + nb + "] First Name: The_Name<br>Last Name: The_LName<br><img src='https://image.freepik.com/photos-libre/smiley_21108723.jpg' height=10%/></br><p>Critere : "+ score_position +"/10</p><p>"+ score_interet +"</p></div>").openPopup();
 		nb += 1;
@@ -261,11 +273,11 @@ function onMClick(e)
 		var the_pop = this.getPopup();
 		this.unbindPopup();
 		this.bindPopup(the_pop).openPopup();
-	}*/
+	}
 }
 
-function toto()
+function onContClick(e)
 {
-	
+	alert("User");
 }
 }
