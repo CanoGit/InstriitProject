@@ -7,7 +7,8 @@ function	data()
 				"lastName":"Paulin",
 				"age":26,
 				"famiStatu":"Célibataire",
-				"lngLat":"",
+				"lng":"48.804094",
+				"lat":"2.604160",
 				"addr":"13 rue de Paris, 75010 Paris",
 				"critere":[
 				"ecole",
@@ -23,9 +24,10 @@ function	data()
 				{
 				"firstName":"Marie",
 				"lastName":"Clavier",
-				"age": 28,
-				"famiStatu":"Célibataire",
-				"lngLat":"",
+				"age":32,
+				"famiStatu":"Mariée",
+				"lng":"48.804456",
+				"lat":"2.588451",
 				"addr":"12 rue Jean Moulin, 75011 Paris",
 				"interetCenter":[
 				"fête",
@@ -36,12 +38,13 @@ function	data()
 				"firstName":"Matthieu",
 				"lastName":"Bato",
 				"age":55,
-				"famiStatu":"Célibataire",
-				"lngLat":"",
+				"famiStatu":"Marié",
+				"lng":"48.807543",
+				"lat":"2.598275",
 				"addr":"9 rue du savetier, 75017 Paris",
 				"interetCenter":[
 				"course hippique",
-				"foot",
+				"animaux",
 				"voiture"]
 				}
 			],
@@ -240,18 +243,26 @@ var nb = 0;
 
 function onMClick(e)
 {
+<<<<<<< .mine
+	alert(this.getLatLng().lat + " , " + this.get().lng);
+	/*if (!this.getPopup())
+||||||| .r12
+	if (!this.getPopup())
+=======
 	var score_position = score_pos();
 	var score_interet = score_int();
 	if (!this.getPopup())
+>>>>>>> .r14
 	{
 		this.bindPopup("<div class='poi'>Popup[" + nb + "] First Name: The_Name<br>Last Name: The_LName<br><img src='https://image.freepik.com/photos-libre/smiley_21108723.jpg' height=10%/></br><p>Critere : "+ score_position +"/10</p><p>"+ score_interet +"</p></div>").openPopup();
 		nb += 1;
 	}
 	else
 	{
-		this.closePopup();
-		this.openPopup().skjfkldsfj();
-	}
+		var the_pop = this.getPopup();
+		this.unbindPopup();
+		this.bindPopup(the_pop).openPopup();
+	}*/
 }
 
 function toto()
