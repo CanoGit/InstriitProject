@@ -6,7 +6,7 @@ function	data()
 				"firstName":"Paul",
 				"lastName":"Paulin",
 				"age":26,
-				"famiStatu":"Célibataire",
+				"famiStatu":"CÃƒÂ©libataire",
 				"lng":"48.804094",
 				"lat":"2.604160",
 				"addr":"13 rue de Paris, 75010 Paris",
@@ -25,12 +25,12 @@ function	data()
 				"firstName":"Marie",
 				"lastName":"Clavier",
 				"age":32,
-				"famiStatu":"Mariée",
+				"famiStatu":"MariÃƒÂ©e",
 				"lng":"48.804456",
 				"lat":"2.588451",
 				"addr":"12 rue Jean Moulin, 75011 Paris",
 				"interetCenter":[
-				"fête",
+				"fÃƒÂªte",
 				"foot",
 				"promenade"]
 				},
@@ -38,7 +38,7 @@ function	data()
 				"firstName":"Matthieu",
 				"lastName":"Bato",
 				"age":55,
-				"famiStatu":"Marié",
+				"famiStatu":"MariÃƒÂ©",
 				"lng":"48.807543",
 				"lat":"2.598275",
 				"addr":"9 rue du savetier, 75017 Paris",
@@ -92,7 +92,7 @@ function	data()
 						{
 						"name": "Aux turc",
 						"add": "",
-						"type": "specialités Grec"
+						"type": "specialitÃƒÂ©s Grec"
 						}
 					],
 			"service_public": {
@@ -243,8 +243,7 @@ var nb = 0;
 
 function onMClick(e)
 {
-<<<<<<< .mine
-	alert(this.getLatLng().lat + " , " + this.get().lng);
+	alert(this.getLatLng().lat + " , " + this.getLatLng().lng);
 	/*if (!this.getPopup())
 ||||||| .r12
 	if (!this.getPopup())
