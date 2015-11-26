@@ -220,9 +220,10 @@ function	score_int()
 	return (score);
 }
 
-function map_leaft(data)
+function map_leaft()
 {
-	var map = L.map('carte').setView([48.8592, 2.3417], 13);
+	var content = data();
+	var map = L.map('carte').setView([content.persons[0].lng,content.persons[0].lat], 13);
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
 	{
 		attribution: 'mapbox://styles/huchetmap/cihdgkp4600j5bwm5yyo3jr0q',
@@ -230,7 +231,6 @@ function map_leaft(data)
 		id: 'mapbox.mapbox-streets-v6',
 		accessToken: 'pk.eyJ1IjoiaHVjaGV0bWFwIiwiYSI6ImNpaGRnOXUwejAwMXp1Mm00M28zb3JtbWUifQ.o8ZoDxmnBANxWlVeaTFhUA'
 		}).addTo(map);
-	var marker = L.marker([48.8592, 2.3417]).addTo(map);
 	map.on("click", onMapClick);
 
 function onMapClick(e)
