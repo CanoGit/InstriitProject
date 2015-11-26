@@ -53,12 +53,12 @@ function	data()
 				{"type":"bar", "icon":"https://cdn2.iconfinder.com/data/icons/restaurant-1/100/martini_dinner_lunch_restaurant_vegetables_drink-128.png"},
 				{"type" : "restaurant", "icon" : "https://cdn0.iconfinder.com/data/icons/kameleon-free-pack/110/Food-Dome-128.png"},
 				{"type" : "commisariat", "icon" : "https://cdn0.iconfinder.com/data/icons/fire/106/police_car-128.png"},
-				{"type" : "ecole", "icon" : "https://cdn3.iconfinder.com/data/icons/higher-education-icon-set/128/math.png"},
+				{"type" : "ecole", "icon" : "https://cdn2.iconfinder.com/data/icons/mixed-1st-volume/512/tabla-128.png"},
 				{"type" : "parc", "icon" : "https://cdn2.iconfinder.com/data/icons/flat-jewels-icon-set/128/0002_Tree.png"},
 				{"type" : "poste", "icon" : "https://cdn4.iconfinder.com/data/icons/ballicons-2-free/100/669348-letter-128.png"},
 				{"type" : "banque", "icon" : "https://cdn4.iconfinder.com/data/icons/e-commerce-and-shopping-3/500/credit-card-128.png"},
-				{"type" : "epicerie", "icon" : "https://cdn4.iconfinder.com/data/icons/e-commerce-and-shopping-3/500/credit-card-128.png"},
-				"mairie"
+				{"type" : "epicerie", "icon" : "https://cdn4.iconfinder.com/data/icons/e-commerce-and-shopping-3/500/store-building-128.png"},
+				{"type" : "mairie", "icon" : "https://cdn4.iconfinder.com/data/icons/banking-and-finance/500/bank-building-128.png"}
 			],
 			"bar":[
 					{
@@ -267,6 +267,7 @@ function map_leaft()
 		accessToken: 'pk.eyJ1IjoiaHVjaGV0bWFwIiwiYSI6ImNpaGRnOXUwejAwMXp1Mm00M28zb3JtbWUifQ.o8ZoDxmnBANxWlVeaTFhUA'
 	}).addTo(map);
 	CheckPersons(content.persons, map);
+	CheckPOI(content.pos, map);
 
 function CheckPersons(dataPers, map)
 {
@@ -288,6 +289,28 @@ function CheckPersons(dataPers, map)
 	{
 		marker = L.marker([dataPers[i].lng,dataPers[i].lat], {icon: myIcon}).addTo(map);
 		marker.on("click", onPClick);
+	}
+}
+
+function CheckPOI(dataPOI, map)
+{
+	for (var i = 0; i < dataPOI.critere_pos.length; i++)
+	{
+		//console.log("i " + i + "    " + dataPOI.critere_pos[i].icon);
+		if (dataPOI[dataPOI.critere_pos[i].type] != undefined)
+			for (var j = 0; j < dataPOI[dataPOI.critere_pos[i].type].length; j++)
+			{
+				var myIcon = L.icon(
+				{
+    			iconUrl: dataPOI.critere_pos[i].icon,
+    			iconSize: [38, 38],
+    			iconAnchor: [19, 38],
+    			popupAnchor: [-3, -76]
+				});
+				//alert(dataPOI[dataPOI.critere_pos[i]][j].lat);
+				var marker = L.marker([dataPOI[dataPOI.critere_pos[i].type][j].lng, dataPOI[dataPOI.critere_pos[i].type][j].lat], {icon: myIcon}).addTo(map);
+				marker.on("click", onPOIClick);
+			}
 	}
 }
 
