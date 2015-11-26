@@ -348,6 +348,9 @@ function	aff_div()
 		div_popup.style.overflow = "auto";
 		div_popup.style.height = "100px";
 		div_popup.style.width = "100%";
+		div_popup.style.padding = "3px 0px 0px 3px";
+		div_popup.style.border = "1px solid #C0C0C0";
+		div_popup.style.borderRadius = "5px 0px 0px 5px";
 		var div_popup1 = document.getElementById("toto1");
 		div_popup1.style.display = "none";
 		info = 1;
@@ -387,17 +390,15 @@ function	New_info()
 
 function onPClick(e)
 {
-	var score_position = score_pos();
 	var score_interet = score_int();
 	if (!this.getPopup())
 	{
-		var info = New_info();
-		var Popuptot = "<div class='poi'>First Name: The_Name<br>Last Name: The_LName<br>" +
-		"<img src='https://image.freepik.com/photos-libre/smiley_21108723.jpg' height=10%/></br>" +
-		"<p>Critere : "+ score_position +"/10</p>" + 
+		//var info = New_info_interet();
+		var info = "";
+		var Popuptot = "<div class='poi'>" + content.persons[0].firstName + " " + content.persons[0].lastName + "!</br>" +
 		"<div id='toto1' style='display: block;'> Cliquer pour + d'info !:)</div>" +
 		"<div id='toto' style='display: none'>" + info + "</div>" +
-		"<p>"+ score_interet +"</p></div>";
+		"<p>"+ score_interet +"</p></div></div>";
 		this.bindPopup(Popuptot).openPopup();
 		this.on('click',aff_div)
 	}
@@ -412,16 +413,14 @@ function onPClick(e)
 function onContClick(e)
 {
 	var score_position = score_pos();
-	var score_interet = score_int();
 	if (!this.getPopup())
 	{
+		var content = data();
 		var info = New_info();
-		var Popuptot = "<div class='poi'>First Name: The_Name<br>Last Name: The_LName<br>" +
-		"<img src='https://image.freepik.com/photos-libre/smiley_21108723.jpg' height=10%/></br>" +
-		"<p>Critere : "+ score_position +"/10</p>" + 
-		"<div id='toto1' style='display: block;'> Cliquer pour + d'info !:)</div>" +
-		"<div id='toto' style='display: none'>" + info + "</div>" +
-		"<p>"+ score_interet +"</p></div>";
+		var Popuptot = "<div class='poi'>Bonjour " + content.persons[0].firstName + " " + content.persons[0].lastName + "!</br>" +
+		"<p>Note critere : "+ score_position +"/10</p>" + 
+		"<div id='toto1' style='display: block;'> Cliquer encore + d'info !:)</div>" +
+		"<div id='toto' style='display: none'>" + info + "</div>" + "</div>";
 		this.bindPopup(Popuptot).openPopup();
 		this.on('click',aff_div)
 	}
