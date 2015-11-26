@@ -1,4 +1,4 @@
-{
+﻿{
 		"persons":[
 				{
 				"firstName":"Paul",
@@ -28,7 +28,7 @@
 				"lat":"2.588451",
 				"addr":"12 rue Jean Moulin, 75011 Paris",
 				"interetCenter":[
-				"fÃƒÂªte",
+				"fete",
 				"foot",
 				"promenade"]
 				},
@@ -48,14 +48,14 @@
 			],
 		"pos":{
 			"critere_pos":[
-				"bar",
-				"restaurant",
-				"commisariat",
-				"ecole",
-				"parc",
-				"poste",
-				"banque",
-				"epicerie",
+				{"type":"bar", "icon":"https://cdn2.iconfinder.com/data/icons/restaurant-1/100/martini_dinner_lunch_restaurant_vegetables_drink-128.png"},
+				{"type" : "restaurant", "icon" : "https://cdn0.iconfinder.com/data/icons/kameleon-free-pack/110/Food-Dome-128.png"},
+				{"type" : "commisariat", "icon" : "https://cdn0.iconfinder.com/data/icons/fire/106/police_car-128.png"},
+				{"type" : "ecole", "icon" : "https://cdn3.iconfinder.com/data/icons/higher-education-icon-set/128/math.png"},
+				{"type" : "parc", "icon" : "https://cdn2.iconfinder.com/data/icons/flat-jewels-icon-set/128/0002_Tree.png"},
+				{"type" : "poste", "icon" : "https://cdn4.iconfinder.com/data/icons/ballicons-2-free/100/669348-letter-128.png"},
+				{"type" : "banque", "icon" : "https://cdn4.iconfinder.com/data/icons/e-commerce-and-shopping-3/500/credit-card-128.png"},
+				{"type" : "epicerie", "icon" : "https://cdn4.iconfinder.com/data/icons/e-commerce-and-shopping-3/500/credit-card-128.png"},
 				"mairie"
 			],
 			"bar":[
@@ -105,8 +105,8 @@
 						"type": "Specialiter latino"
 						}
 					],
-			"service_public": {
-					"commisariat":[ {
+			"commisariat":[
+						{
 						"name" : "Commisariat",
 						"add": "centre ville",
 						"lng":"48.799030",
@@ -114,14 +114,14 @@
 						"type": "Municipal"
 						}
 					],
-					"poste": [ {
+			"poste": [ {
 						"name" : "Poste",
 						"add": "centre ville",
 						"lng":"48.798454",
 						"lat":"2.605381",
 						"type": "poste"} 
 					],
-					"banque":[
+			"banque":[
 						{
 						"name" : "BNP",
 						"add": "centre ville",
@@ -137,14 +137,13 @@
 							"type": "Agence"
 						}
 					],
-					"mairie":[{
+			"mairie":[{
 						"name" : "Mairie",
 						"lng":"48.801447",
 						"lat":"2.607751",
 						"add": "centre ville",
 						"type": "ville"}
-					]
-				},
+					],
 			"ecole": [
 					{
 						"name" : "Jean Moulin",
@@ -179,11 +178,11 @@
 			],
 			"epicerie": [
 				{
-					"name" : "Intermarché",
+					"name" : "Inter Marche",
 					"add": "10 rue lilas",
 					"lng":"48.807689",
 					"lat":"2.617723",
-					"type": "super marché"
+					"type": "super marche"
 				},
 				{
 					"name" : "Simply Market",
