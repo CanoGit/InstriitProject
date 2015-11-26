@@ -30,7 +30,7 @@ function	data()
 				"lat":"2.588451",
 				"addr":"12 rue Jean Moulin, 75011 Paris",
 				"interetCenter":[
-				"fÃƒÂªte",
+				"fete",
 				"foot",
 				"promenade"]
 				},
@@ -50,14 +50,14 @@ function	data()
 			],
 		"pos":{
 			"critere_pos":[
-				"bar",
-				"restaurant",
-				"commisariat",
-				"ecole",
-				"parc",
-				"poste",
-				"banque",
-				"epicerie",
+				{"type":"bar", "icon":"https://cdn2.iconfinder.com/data/icons/restaurant-1/100/martini_dinner_lunch_restaurant_vegetables_drink-128.png"},
+				{"type" : "restaurant", "icon" : "https://cdn0.iconfinder.com/data/icons/kameleon-free-pack/110/Food-Dome-128.png"},
+				{"type" : "commisariat", "icon" : "https://cdn0.iconfinder.com/data/icons/fire/106/police_car-128.png"},
+				{"type" : "ecole", "icon" : "https://cdn3.iconfinder.com/data/icons/higher-education-icon-set/128/math.png"},
+				{"type" : "parc", "icon" : "https://cdn2.iconfinder.com/data/icons/flat-jewels-icon-set/128/0002_Tree.png"},
+				{"type" : "poste", "icon" : "https://cdn4.iconfinder.com/data/icons/ballicons-2-free/100/669348-letter-128.png"},
+				{"type" : "banque", "icon" : "https://cdn4.iconfinder.com/data/icons/e-commerce-and-shopping-3/500/credit-card-128.png"},
+				{"type" : "epicerie", "icon" : "https://cdn4.iconfinder.com/data/icons/e-commerce-and-shopping-3/500/credit-card-128.png"},
 				"mairie"
 			],
 			"bar":[
@@ -107,8 +107,8 @@ function	data()
 						"type": "Specialiter latino"
 						}
 					],
-			"service_public": {
-					"commisariat":[ {
+			"commisariat":[
+						{
 						"name" : "Commisariat",
 						"add": "centre ville",
 						"lng":"48.799030",
@@ -116,14 +116,14 @@ function	data()
 						"type": "Municipal"
 						}
 					],
-					"poste": [ {
+			"poste": [ {
 						"name" : "Poste",
 						"add": "centre ville",
 						"lng":"48.798454",
 						"lat":"2.605381",
 						"type": "poste"} 
 					],
-					"banque":[
+			"banque":[
 						{
 						"name" : "BNP",
 						"add": "centre ville",
@@ -139,14 +139,13 @@ function	data()
 							"type": "Agence"
 						}
 					],
-					"mairie":[{
+			"mairie":[{
 						"name" : "Mairie",
 						"lng":"48.801447",
 						"lat":"2.607751",
 						"add": "centre ville",
 						"type": "ville"}
-					]
-				},
+					],
 			"ecole": [
 					{
 						"name" : "Jean Moulin",
@@ -169,7 +168,7 @@ function	data()
 					"add": "10 rue lilas",
 					"lng":"48.806101",
 					"lat":"2.583785",
-					"type": "jeux"
+					"type": "Jeux"
 				},
 				{
 					"name" : "Robert Shuman",
@@ -181,11 +180,11 @@ function	data()
 			],
 			"epicerie": [
 				{
-					"name" : "Intermarché",
+					"name" : "Inter Marche",
 					"add": "10 rue lilas",
 					"lng":"48.807689",
 					"lat":"2.617723",
-					"type": "super marché"
+					"type": "super marche"
 				},
 				{
 					"name" : "Simply Market",
@@ -214,9 +213,9 @@ function	score_pos()
 	for (var i = 0; content.persons[0].critere[i] != undefined; i++)
 	{
 		critere_choix = content.persons[0].critere[i];
-		for (var j = 0; content.pos.critere_pos[j] != undefined; j++)
+		for (var j = 0; content.pos.critere_pos[j].type != undefined; j++)
 		{
-			critere_pos = content.pos.critere_pos[j];
+			critere_pos = content.pos.critere_pos[j].type;
 			if (critere_pos == critere_choix)
 			{
 				score++;
@@ -292,17 +291,69 @@ function CheckPersons(dataPers, map)
 	}
 }
 
-var nb = 0;
+var info = 0;
+
+function	aff_div()
+{
+	if (info == 0)
+	{
+		var div_popup = document.getElementById("toto");
+		div_popup.style.display = "block";
+		div_popup.style.overflow = "auto";
+		div_popup.style.height = "100px";
+		div_popup.style.width = "100%";
+		var div_popup1 = document.getElementById("toto1");
+		div_popup1.style.display = "none";
+		info = 1;
+	}
+	else
+	{
+		var div_popup = document.getElementById("toto");
+		div_popup.style.display = "none";
+		var div_popup1 = document.getElementById("toto1");
+		div_popup1.style.display = "block";
+		info = 0;
+	}
+}
+
+function	New_info()
+{
+	var content = data();
+	var score = 0;
+	var info = "";
+	for (var i = 0; content.persons[0].critere[i] != undefined; i++)
+	{
+		critere_choix = content.persons[0].critere[i];
+		for (var j = 0; content.pos.critere_pos[j].type != undefined; j++)
+		{
+			critere_pos = content.pos.critere_pos[j].type;
+			if (critere_pos == critere_choix)
+			{
+				var add = content.pos[critere_pos][0].add;
+				var name = content.pos[critere_pos][0].name;
+				var type = content.pos[critere_pos][0].type;
+				info += "Type : " + critere_choix + "</br>Desc : " + type + "</br>Name : " + name + "</br> Add : " + add + "</br></br>";
+			}
+		}
+	}
+	return (info);
+}
 
 function onPClick(e)
 {
-	alert("Person");
 	var score_position = score_pos();
 	var score_interet = score_int();
 	if (!this.getPopup())
 	{
-		this.bindPopup("<div class='poi'>Popup[" + nb + "] First Name: The_Name<br>Last Name: The_LName<br><img src='https://image.freepik.com/photos-libre/smiley_21108723.jpg' height=10%/></br><p>Critere : "+ score_position +"/10</p><p>"+ score_interet +"</p></div>").openPopup();
-		nb += 1;
+		var info = New_info();
+		var Popuptot = "<div class='poi'>First Name: The_Name<br>Last Name: The_LName<br>" +
+		"<img src='https://image.freepik.com/photos-libre/smiley_21108723.jpg' height=10%/></br>" +
+		"<p>Critere : "+ score_position +"/10</p>" + 
+		"<div id='toto1' style='display: block;'> Cliquer pour + d'info !:)</div>" +
+		"<div id='toto' style='display: none'>" + info + "</div>" +
+		"<p>"+ score_interet +"</p></div>";
+		this.bindPopup(Popuptot).openPopup();
+		this.on('click',aff_div)
 	}
 	else
 	{
