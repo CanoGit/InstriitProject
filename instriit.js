@@ -10,6 +10,7 @@ function	data()
 				"lng":"48.804094",
 				"lat":"2.604160",
 				"addr":"13 rue de Paris, 75010 Paris",
+				"img":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAKbAAAAJDM3MDkxZjBhLTgwOGItNGJhOS1hMWZjLWYxODI5ODQ4OTM1YQ.jpg",
 				"critere":[
 				"ecole",
 				"commisariat",
@@ -113,6 +114,7 @@ function	data()
 						"add": "centre ville",
 						"lng":"48.799030",
 						"lat":"2.605287",
+						"img":"http://www.francetvinfo.fr/image/74vou44f4-721a/908/510/1448355.jpg",
 						"type": "Municipal"
 						}
 					],
@@ -121,7 +123,9 @@ function	data()
 						"add": "centre ville",
 						"lng":"48.798454",
 						"lat":"2.605381",
-						"type": "poste"} 
+						"type": "poste",
+						"img":"http://images-02.delcampe-static.net/img_large/auction/000/081/620/368_001.jpg"
+						} 
 					],
 			"banque":[
 						{
@@ -144,7 +148,9 @@ function	data()
 						"lng":"48.801447",
 						"lat":"2.607751",
 						"add": "centre ville",
-						"type": "ville"}
+						"type": "ville",
+						"img":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Hotel_de_ville_de_Pontault-Combault.jpg/280px-Hotel_de_ville_de_Pontault-Combault.jpg"
+						}
 					],
 			"ecole": [
 					{
@@ -159,7 +165,8 @@ function	data()
 						"add": "10 rue des follie",
 						"lng":"48.802145",
 						"lat":"2.620013",
-						"type": "College"
+						"type": "College",
+						"img":"http://archishowme.com/site/wp-content/uploads/2013/08/collegecamus.jpg"
 					}
 				],
 			"parc": [
@@ -185,7 +192,8 @@ function	data()
 					"add": "10 rue lilas",
 					"lng":"48.807689",
 					"lat":"2.617723",
-					"type": "super marche"
+					"type": "super marche",
+					"img": "http://www.larepublique77.fr/files/2015/01/DSC03482.JPG"
 				},
 				{
 					"name" : "Simply Market",
@@ -199,7 +207,8 @@ function	data()
 					"add": "12 rue lilas",
 					"lng":"48.799470",
 					"lat":"2.607406",
-					"type": "Epicerie"
+					"type": "Epicerie",
+					"img":"http://www.larepublique77.fr/files/2015/10/Sans-titre2.jpg"
 				}
 			]
 		}
