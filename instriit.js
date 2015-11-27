@@ -41,7 +41,7 @@ function	data()
 				"lastName":"Bato",
 				"age": 55,
 				"famiStatu":"Mariee",
-				"img" : "",
+				"img" : "imguser/user1.png",
 				"lng":"48.807543",
 				"lat":"2.598275",
 				"addr":"9 rue du savetier, 75017 Paris",
@@ -280,6 +280,7 @@ function map_leaft()
 	}).addTo(map);
 	CheckPersons(content.persons, map);
 	CheckPOI(content.pos, map);
+	map.on("moveend", mapUpdate);
 
 function CheckPersons(dataPers, map)
 {
@@ -302,29 +303,6 @@ function CheckPersons(dataPers, map)
 		marker = L.marker([dataPers[i].lng,dataPers[i].lat], {icon: myIcon}).addTo(map);
 		getPopupPer(marker, dataPers[i]);
 		marker.on("click", onPClick);
-	}
-}
-
-function CheckPOI(dataPOI, map)
-{
-	for (var i = 0; i < dataPOI.critere_pos.length; i++)
-	{
-		//console.log("i " + i + "    " + dataPOI.critere_pos[i].icon);
-		if (dataPOI[dataPOI.critere_pos[i].type] != undefined)
-			for (var j = 0; j < dataPOI[dataPOI.critere_pos[i].type].length; j++)
-			{
-				var myIcon = L.icon(
-				{
-    			iconUrl: dataPOI.critere_pos[i].icon,
-    			iconSize: [38, 38],
-    			iconAnchor: [19, 38],
-    			popupAnchor: [-3, -76]
-				});
-				//alert(dataPOI[dataPOI.critere_pos[i]][j].lat);
-				var marker = L.marker([dataPOI[dataPOI.critere_pos[i].type][j].lng, dataPOI[dataPOI.critere_pos[i].type][j].lat], {icon: myIcon}).addTo(map);
-				getPopupPOI(marker, dataPOI[dataPOI.critere_pos[i].type][j]);
-				marker.on("click", onPOIClick);
-			}
 	}
 }
 
@@ -441,6 +419,7 @@ function onContClick(e)
 		this.bindPopup(the_pop).openPopup();
 	}
 }
+}
 
 function onPOIClick(e)
 {
@@ -448,9 +427,52 @@ function onPOIClick(e)
 	this.unbindPopup();
 	this.bindPopup(the_pop).openPopup();
 }
-}
 
 var info_us = 0;
+function mapUpdate(event)
+{
+	var req =  createInstanceReq();
+	var bounds = event.target.getBounds();
+	var data = "pos=" + encodeURIComponent(bounds.toBBoxString());
+	req.onreadystatechange = function()
+	{ 
+		if(req.readyState == 4)
+		{
+				if(req.status == 200)
+				{
+					CheckPOI(JSON.parse(req.responseText), event.target);
+				}	
+				else	
+				{
+						alert("Error: returned status code " + req.status + " " + req.statusText);
+				}	
+		} 
+	};
+
+req.open("POST", "getData.php", true); 
+req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+req.send(data); 
+}
+
+function createInstanceReq()
+{
+  var req = null;
+  if(window.XMLHttpRequest) {
+    req = new XMLHttpRequest();
+  }
+  else if (window.ActiveXObject) {
+    try {
+      req = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+       try {
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (e) {
+            alert("XHR not created");
+          }
+      }
+    }
+    return req;
+}
 
 function	aff_div(e)
 {
@@ -504,7 +526,7 @@ function	getPopupPOI(POIMarker, POIData)
 	}
 	else
 	{
-		var PopCont = "<div id='poi' style='width: 105px; height: 100%;'>" + POIData.name + "</br>" +
+		var PopCont = "<div id='poi' style='width: 110px; height: 100%;'>" + POIData.name + "</br>" +
 		"<div style='display: inline-block; width: 100%; height: 10%; margin-top: -15%; margin-bottom: -15%;' id='bouton_plus_div'><p style='float: left; widht: 100%;'>" + POIData.type + "</p>" +
 		"<button onclick='aff_div_poi();' style='border: none; background: none; margin-top: 0px; height: 20%; width: 5%; float: left; outline-style: none;'><img src='bouton_plus.png' style='height: 19px; margin-top: 15px;'/></button></div>" +
 		"<div style='display: none; width: 100%; margin-top: -15%; height: 20%;' id='bouton_moin_div'><p style='float: left;'>" + POIData.type + "</p>" +
@@ -543,5 +565,28 @@ function	aff_div_poi(e)
 		var div_popup_btn_p = document.getElementById("bouton_plus_div");
 		div_popup_btn_p.style.display = "inline-block";
 		info_poi = 0;
+	}
+}
+
+function CheckPOI(dataPOI, map)
+{
+	for (var i = 0; i < dataPOI.critere_pos.length; i++)
+	{
+		//console.log("i " + i + "    " + dataPOI.critere_pos[i].icon);
+		if (dataPOI[dataPOI.critere_pos[i].type] != undefined)
+			for (var j = 0; j < dataPOI[dataPOI.critere_pos[i].type].length; j++)
+			{
+				var myIcon = L.icon(
+				{
+    			iconUrl: dataPOI.critere_pos[i].icon,
+    			iconSize: [38, 38],
+    			iconAnchor: [21, 38],
+    			popupAnchor: [-3, -45]
+				});
+				//alert(dataPOI[dataPOI.critere_pos[i]][j].lat);
+				var marker = L.marker([dataPOI[dataPOI.critere_pos[i].type][j].lng, dataPOI[dataPOI.critere_pos[i].type][j].lat], {icon: myIcon}).addTo(map);
+				getPopupPOI(marker, dataPOI[dataPOI.critere_pos[i].type][j]);
+				marker.on("click", onPOIClick);
+			}
 	}
 }
