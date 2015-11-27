@@ -27,6 +27,7 @@ function	data()
 				"lastName":"Clavier",
 				"age": 28,
 				"famiStatu":"Celibataire",
+				"img" : "imguser/user2.png",
 				"lng":"48.804456",
 				"lat":"2.588451",
 				"addr":"12 rue Jean Moulin, 75011 Paris",
@@ -40,6 +41,7 @@ function	data()
 				"lastName":"Bato",
 				"age": 55,
 				"famiStatu":"Mariee",
+				"img" : "",
 				"lng":"48.807543",
 				"lat":"2.598275",
 				"addr":"9 rue du savetier, 75017 Paris",
@@ -64,14 +66,14 @@ function	data()
 			"bar":[
 					{
 					"name" : "Bellevue",
-					"add": "",
+					"addr": "",
 					"lng":"48.806475",
 					"lat":"2.616720",
 					"type": "Bar"
 					},
 					{
 					"name" : "Cafe de la gare",
-					"add": "",
+					"addr": "",
 					"lng":"48.805883",
 					"lat":"2.617624",
 					"type": "Cafe"
@@ -79,7 +81,7 @@ function	data()
 					},
 					{
 					"name" : "Cosmic Lazer",
-					"add": "",
+					"addr": "",
 					"lng":"48.777166",
 					"lat":"2.592688",
 					"type": "Boite de nuit"
@@ -88,21 +90,21 @@ function	data()
 			"restaurant": [
 						{
 						"name": "Dominos",
-						"add": "",
+						"addr": "",
 						"lng":"48.795793",
 						"lat":"2.604273",
 						"type": "Pizzeria"
 						},
 						{
 						"name": "Val Aoste",
-						"add": "",
+						"addr": "",
 						"lng":"48.796135",
 						"lat":"2.604614",
 						"type": "Cuisine francaise"
 						},
 						{
 						"name": "Terra Latino",
-						"add": "",
+						"addr": "",
 						"lng":"48.793211",
 						"lat":"2.608428",
 						"type": "Specialiter latino"
@@ -111,7 +113,7 @@ function	data()
 			"commisariat":[
 						{
 						"name" : "Commisariat",
-						"add": "centre ville",
+						"addr": "centre ville",
 						"lng":"48.799030",
 						"lat":"2.605287",
 						"img":"http://www.francetvinfo.fr/image/74vou44f4-721a/908/510/1448355.jpg",
@@ -120,7 +122,7 @@ function	data()
 					],
 			"poste": [ {
 						"name" : "Poste",
-						"add": "centre ville",
+						"addr": "centre ville",
 						"lng":"48.798454",
 						"lat":"2.605381",
 						"type": "poste",
@@ -130,14 +132,14 @@ function	data()
 			"banque":[
 						{
 						"name" : "BNP",
-						"add": "centre ville",
+						"addr": "centre ville",
 						"lng":"48.799826",
 						"lat":"2.607167",
 						"type": "Agence"
 						},
 						{
 							"name" : "Credit Mutuel",
-							"add": "centre ville",
+							"addr": "centre ville",
 							"lng":"48.799290",
 							"lat":"2.606436",
 							"type": "Agence"
@@ -147,7 +149,7 @@ function	data()
 						"name" : "Mairie",
 						"lng":"48.801447",
 						"lat":"2.607751",
-						"add": "centre ville",
+						"addr": "centre ville",
 						"type": "ville",
 						"img":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Hotel_de_ville_de_Pontault-Combault.jpg/280px-Hotel_de_ville_de_Pontault-Combault.jpg"
 						}
@@ -155,14 +157,14 @@ function	data()
 			"ecole": [
 					{
 						"name" : "Jean Moulin",
-						"add": "",
+						"addr": "45 rue tuilerie",
 						"lng":"48.806978",
 						"lat":"2.583972",
 						"type": "Primaire"
 					},
 					{
 						"name" : "Concordet",
-						"add": "10 rue des follie",
+						"addr": "10 rue des follie",
 						"lng":"48.802145",
 						"lat":"2.620013",
 						"type": "College",
@@ -172,7 +174,7 @@ function	data()
 			"parc": [
 				{
 					"name" : "De Gaulle",
-					"add": "10 rue lilas",
+					"addr": "10 rue lilas",
 					"lng":"48.806101",
 					"lat":"2.583785",
 					"type": "Jeux",
@@ -180,7 +182,7 @@ function	data()
 				},
 				{
 					"name" : "Robert Shuman",
-					"add": "11 rue lilas",
+					"addr": "11 rue lilas",
 					"lng":"48.803938",
 					"lat":"2.583020",
 					"type": "espace vert"
@@ -189,7 +191,7 @@ function	data()
 			"epicerie": [
 				{
 					"name" : "Inter Marche",
-					"add": "10 rue lilas",
+					"addr": "10 rue lilas",
 					"lng":"48.807689",
 					"lat":"2.617723",
 					"type": "super marche",
@@ -197,14 +199,14 @@ function	data()
 				},
 				{
 					"name" : "Simply Market",
-					"add": "11 rue lilas",
+					"addr": "11 rue lilas",
 					"lng":"48.805831",
 					"lat":"2.586013",
 					"type": "Epicerie"
 				},
 				{
 					"name" : "Carrefour Market",
-					"add": "12 rue lilas",
+					"addr": "12 rue lilas",
 					"lng":"48.799470",
 					"lat":"2.607406",
 					"type": "Epicerie",
@@ -284,14 +286,14 @@ function CheckPersons(dataPers, map)
 	var myIcon = L.icon({
     iconUrl: 'https://cdn3.iconfinder.com/data/icons/ballicons-free/128/man.png',
     iconSize: [38, 38],
-    iconAnchor: [19, 38],
-    popupAnchor: [-3, -76]
+    iconAnchor: [22, 38],
+    popupAnchor: [-3, -45]
 });
 	var ContIcon = L.icon({
     iconUrl: 'https://cdn2.iconfinder.com/data/icons/arrows-free/32/down_nav_arrow_point-128.png',
     iconSize: [38, 38],
-    iconAnchor: [19, 38],
-    popupAnchor: [-3, -76]
+	iconAnchor: [20, 38],
+	popupAnchor: [-3, -45]
 });
 	var marker = L.marker([dataPers[0].lng,dataPers[0].lat], {icon: ContIcon}).addTo(map);
 		marker.on("click", onContClick);
@@ -326,17 +328,6 @@ function CheckPOI(dataPOI, map)
 	}
 }
 
-function	getPopupPOI(POIMarker, POIData)
-{
-	var info = "";
-	var PopCont = "<div class='poi'>Name: " + POIData.name + "<br>"
-	if (POIData.img != undefined)
-		PopCont += "<img src='" + POIData.img + "' height=10%/></br>"
-	PopCont += 	"<button> Cliquer pour + d'info !:)</button>" +
-	"<div id='toto' style='display: none'>" + info + "</div>";
-	POIMarker.bindPopup(PopCont);
-}
-
 function	getPopupPer(PerMarker, PerData)
 {
 	var score_interet = score_int(PerData);
@@ -346,18 +337,25 @@ function	getPopupPer(PerMarker, PerData)
 	for (var i = 0; PerData.interetCenter[i] != undefined; i++)
 	{
 		if (i == 0)
-			interet += "<br>&nbsp;&nbsp;&nbsp;&nbsp;-" + PerData.interetCenter[i] + "<br>";
+			interet += "<br>&nbsp;&nbsp;&nbsp;&nbsp;- " + PerData.interetCenter[i] + "<br>";
 		else
-			interet += "" + "&nbsp;&nbsp;&nbsp;&nbsp;-" + PerData.interetCenter[i] + "<br>";
+			interet += "" + "&nbsp;&nbsp;&nbsp;&nbsp;- " + PerData.interetCenter[i] + "<br>";
 	}
-	info += "Situation social : " + status_soc + "</br>Centre d'interet : " + interet;
-	var PopCont = "<div class='poi'>" + PerData.firstName + " " + PerData.lastName + "!</br>";
+	info += "Est " + status_soc + ".</br>Centre d'interet : " + interet;
+	var PopCont = "<div class='poi'>";
+	if (PerData.img != "")
+	{
+		PopCont += "<img src='" + PerData.img + "' height=5%/>";
+		PopCont += "&nbsp;&nbsp;" + PerData.firstName +  " " + PerData.lastName + "!</br>";
+	}
+	else
+		PopCont += PerData.firstName +  " " + PerData.lastName + "!</br>";
 	if (score_interet != "")
 		PopCont += score_interet + "</br>";
 	else
 	{
 		PopCont += "De " + PerData.age + " ans.</br>";
-		PopCont += "Addresse : " + PerData.addr + "</br>";
+		PopCont += "Aux " + PerData.addr + ".</br>";
 	}
 	PopCont += "" + info + "</div>";
 	PerMarker.bindPopup(PopCont);
@@ -407,7 +405,7 @@ function	New_info_us()
 				var add = content.pos[critere_pos][0].add;
 				var name = content.pos[critere_pos][0].name;
 				var type = content.pos[critere_pos][0].type;
-				info += "Type : " + critere_choix + "</br>Desc : " + type + "</br>Name : " + name + "</br> Add : " + add + "</br></br>";
+				info += name + ",</br>" + critere_choix + ",</br>" + type + ",</br>" + add + ".</br></br>";
 			}
 		}
 	}
@@ -428,12 +426,13 @@ function onContClick(e)
 	{
 		var content = data();
 		var info_tot = New_info_us();
-		var Popuptot = "<div class='poi'>Bonjour " + content.persons[0].firstName + " " + content.persons[0].lastName + "!</br>" +
-		"<p>Note critere : "+ score_position +"/10</p>" +
-		"<div id='aff_info_us' style='display: block;'> Cliquer encore + d'info !:)</div>" +
+		var Popuptot = "<div id='user' style='height: 10%; margin-bottom: -15%;'>Bonjour " + content.persons[0].firstName + " " + content.persons[0].lastName + "!</br>" +
+		"<div style='display: inline-block; width: 100%; margin-top: -15%;' id='bouton_plus_div'><p style='float: left;'>Note critere : " + score_position + "/10</p>" +
+		"<button onclick='aff_div();' style='border: none; background: none; height: 20%; width: 5%; float: left; outline-style: none;'><img src='bouton_plus.png' style='height: 19px; margin-top: 15px;'/></button></div>" +
+		"<div style='display: none; width: 100%; margin-top: -15%;' id='bouton_moin_div'><p style='float: left;'>Note critere : " + score_position + "/10</p>" +
+		"<button onclick='aff_div();' style='border: none; background: none; height: 20%; width: 5%; float: left; outline-style: none;'><img src='bouton_moin.png' style='height: 19px; margin-top: 15px;'/></button></div>" +
 		"<div id='info_plus_us' style='display: none'>" + info_tot + "</div>" + "</div>";
 		this.bindPopup(Popuptot).openPopup();
-		this.on('click',aff_div_us)
 	}
 	else
 	{
@@ -445,6 +444,104 @@ function onContClick(e)
 
 function onPOIClick(e)
 {
-	alert("POI");
+	var the_pop = this.getPopup();
+	this.unbindPopup();
+	this.bindPopup(the_pop).openPopup();
 }
+}
+
+var info_us = 0;
+
+function	aff_div(e)
+{
+	if (info_us == 0)
+	{
+		var div_popup_c_us = document.getElementById("info_plus_us");
+		div_popup_c_us.style.display = "block";
+		div_popup_c_us.style.overflow = "auto";
+		div_popup_c_us.style.height = "100px";
+		div_popup_c_us.style.width = "auto";
+		div_popup_c_us.style.padding = "3px 0px 0px 3px";
+		div_popup_c_us.style.border = "1px solid #C0C0C0";
+		div_popup_c_us.style.margin = "-10% 0px 0px 0px";
+		div_popup_c_us.style.borderRadius = "5px 0px 0px 5px";
+		var div_popup_btn_p = document.getElementById("bouton_moin_div");
+		div_popup_btn_p.style.display = "inline-block";
+		var div_popup_btn_m = document.getElementById("bouton_plus_div");
+		div_popup_btn_m.style.display = "none";
+		var div_popup_user = document.getElementById("user");
+		div_popup_user.style.padding = "0px 0px 15% 0px";
+		info_us = 1;
+	}
+	else
+	{
+		var div_popup_c_us = document.getElementById("info_plus_us");
+		div_popup_c_us.style.display = "none";
+		var div_popup_user = document.getElementById("user");
+		div_popup_user.style.padding = "0px 0px 0px 0px";
+		var div_popup_btn_m = document.getElementById("bouton_moin_div");
+		div_popup_btn_m.style.display = "none";
+		var div_popup_btn_p = document.getElementById("bouton_plus_div");
+		div_popup_btn_p.style.display = "inline-block";
+		info_us = 0;
+	}
+}
+
+function	getPopupPOI(POIMarker, POIData)
+{
+	var info = "";
+	
+	if (POIData.img != undefined)
+	{
+		var PopCont = "<div id='poi' style='height: 100%;'>" + POIData.name + "</br>" +
+		"<div style='display: inline-block; width: 100%; height: 10%; margin-top: -10%;' id='bouton_plus_div'><p style='float: left; widht: 100%;'>" + POIData.type + "</p>" +
+		"<button onclick='aff_div_poi();' style='border: none; background: none; margin-top: 0px; height: 20%; width: 5%; float: left; outline-style: none;'><img src='bouton_plus.png' style='height: 19px; margin-top: 15px;'/></button></div></br>" +
+		"<div style='display: none; width: 100%; margin-top: -20%; height: 20%;' id='bouton_moin_div'><p style='float: left;'>" + POIData.type + "</p>" +
+		"<button onclick='aff_div_poi();' style='border: none; background: none; height: 20%; margin-top: 0px; width: 5%; float: left; outline-style: none;'><img src='bouton_moin.png' style='height: 19px; margin-top: 15px;'/></button></div>";
+		PopCont += "<img src='" + POIData.img + "' style='height: 10%; border-radius: 5px; margin-top: -10px;'/>";
+		PopCont += "<div id='info_plus_poi' style='display: none;'>" + POIData.addr + "</div>";
+		PopCont += "</div>";
+	}
+	else
+	{
+		var PopCont = "<div id='poi' style='width: 105px; height: 100%;'>" + POIData.name + "</br>" +
+		"<div style='display: inline-block; width: 100%; height: 10%; margin-top: -15%; margin-bottom: -15%;' id='bouton_plus_div'><p style='float: left; widht: 100%;'>" + POIData.type + "</p>" +
+		"<button onclick='aff_div_poi();' style='border: none; background: none; margin-top: 0px; height: 20%; width: 5%; float: left; outline-style: none;'><img src='bouton_plus.png' style='height: 19px; margin-top: 15px;'/></button></div>" +
+		"<div style='display: none; width: 100%; margin-top: -15%; height: 20%;' id='bouton_moin_div'><p style='float: left;'>" + POIData.type + "</p>" +
+		"<button onclick='aff_div_poi();' style='border: none; background: none; height: 20%; margin-top: 0px; width: 5%; float: left; outline-style: none;'><img src='bouton_moin.png' style='height: 19px; margin-top: 15px;'/></button></div>";
+		PopCont += "<div id='info_plus_poi' style='display: none;'>" + POIData.addr + "</div>";
+		PopCont += "</div>";
+	}	
+	POIMarker.bindPopup(PopCont);
+}
+
+var info_poi = 0;
+
+function	aff_div_poi(e)
+{
+	if (info_poi == 0)
+	{
+		var div_popup_c_poi = document.getElementById("info_plus_poi");
+		div_popup_c_poi.style.display = "block";
+		div_popup_c_poi.style.margin = "5px 0px -15% 0px";
+		var div_popup_btn_p = document.getElementById("bouton_moin_div");
+		div_popup_btn_p.style.display = "inline-block";
+		var div_popup_btn_m = document.getElementById("bouton_plus_div");
+		div_popup_btn_m.style.display = "none";
+		var div_popup_poi = document.getElementById("poi");
+		div_popup_poi.style.padding = "0px 0px 15% 0px";
+		info_poi = 1;
+	}
+	else
+	{
+		var div_popup_c_poi = document.getElementById("info_plus_poi");
+		div_popup_c_poi.style.display = "none";
+		var div_popup_poi = document.getElementById("poi");
+		div_popup_poi.style.padding = "0px 0px 0px 0px";
+		var div_popup_btn_m = document.getElementById("bouton_moin_div");
+		div_popup_btn_m.style.display = "none";
+		var div_popup_btn_p = document.getElementById("bouton_plus_div");
+		div_popup_btn_p.style.display = "inline-block";
+		info_poi = 0;
+	}
 }
