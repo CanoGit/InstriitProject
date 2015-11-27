@@ -273,7 +273,7 @@ function map_leaft()
 	{
 		attribution: 'mapbox://styles/huchetmap/cihdgkp4600j5bwm5yyo3jr0q',
 		Zoom: 10,
-		id: 'mapbox.mapbox-streets-v6',
+		id: 'mapbox.outdoors',
 		accessToken: 'pk.eyJ1IjoiaHVjaGV0bWFwIiwiYSI6ImNpaGRnOXUwejAwMXp1Mm00M28zb3JtbWUifQ.o8ZoDxmnBANxWlVeaTFhUA'
 	}).addTo(map);
 	CheckPersons(content.persons, map);
