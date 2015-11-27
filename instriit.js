@@ -24,8 +24,8 @@ function	data()
 				{
 				"firstName":"Marie",
 				"lastName":"Clavier",
-				"age":32,
-				"famiStatu":"Mariee",
+				"age": 28,
+				"famiStatu":"Celibataire",
 				"lng":"48.804456",
 				"lat":"2.588451",
 				"addr":"12 rue Jean Moulin, 75011 Paris",
@@ -37,7 +37,7 @@ function	data()
 				{
 				"firstName":"Matthieu",
 				"lastName":"Bato",
-				"age":55,
+				"age": 55,
 				"famiStatu":"Mariee",
 				"lng":"48.807543",
 				"lat":"2.598275",
@@ -227,7 +227,7 @@ function	score_pos()
 	return (score);
 }
 
-function	score_int()
+function	score_int(PerData)
 {
 	var content = data();
 	var score = "";
@@ -237,16 +237,16 @@ function	score_int()
 		centre_int_pers = content.persons[0].interetCenter[i];
 		for (var u = 1; y != 0; u++)
 		{
-			for (var j = 0; content.persons[u].interetCenter[j] != undefined; j++)
+			for (var j = 0; PerData.interetCenter[j] != undefined; j++)
 			{
 				critere_int = content.persons[u].interetCenter[j];
-				age_at = content.persons[u].age;
+				age_at = PerData.age;
 				age_cp_1 = age_at - 2;
 				age_cp_2 = age_at + 2;
 				if (centre_int_pers == critere_int)
 				{
-					if (content.persons[0].age <= age_cp_2 && content.persons[0].age >= age_cp_1 && content.persons[u].famiStatu == content.persons[0].famiStatu)
-						score = "" + content.persons[u].firstName + " " + content.persons[u].lastName + " de " + content.persons[u].age + " ans.</br> A le meme centre d'interet que vous, '" + content.persons[u].interetCenter[j] + "'.</br>Aux " + content.persons[u].addr + ".";
+					if (content.persons[0].age <= age_cp_2 && content.persons[0].age >= age_cp_1 && PerData.famiStatu == content.persons[0].famiStatu)
+						score = "De " + PerData.age + " ans.</br> A le meme centre d'interet que vous, '" + PerData.interetCenter[j] + "'.</br>Aux " + PerData.addr + ".";
 					y = 0;
 					break;
 				}
@@ -317,10 +317,9 @@ function CheckPOI(dataPOI, map)
 	}
 }
 
-var info = 0;
-
 function	getPopupPOI(POIMarker, POIData)
 {
+	var info = "";
 	var PopCont = "<div class='poi'>Name: " + POIData.name + "<br>"
 	if (POIData.img != undefined)
 		PopCont += "<img src='" + POIData.img + "' height=10%/></br>"
@@ -331,19 +330,37 @@ function	getPopupPOI(POIMarker, POIData)
 
 function	getPopupPer(PerMarker, PerData)
 {
-	var PopCont = "<div class='poi'>Name: " + PerData.name + "<br>"
-	if (PerData.img != undefined)
-		PopCont += "<img src='" + PerData.img + "' height=10%/></br>"
-	PopCont += 	"<button> Cliquer pour + d'info !:)</button>" +
-	"<div id='toto' style='display: none'>" + info + "</div>";
+	var score_interet = score_int(PerData);
+	var info = "";
+	var status_soc = PerData.famiStatu;
+	var interet = "";
+	for (var i = 0; PerData.interetCenter[i] != undefined; i++)
+	{
+		if (i == 0)
+			interet += "<br>&nbsp;&nbsp;&nbsp;&nbsp;-" + PerData.interetCenter[i] + "<br>";
+		else
+			interet += "" + "&nbsp;&nbsp;&nbsp;&nbsp;-" + PerData.interetCenter[i] + "<br>";
+	}
+	info += "Situation social : " + status_soc + "</br>Centre d'interet : " + interet;
+	var PopCont = "<div class='poi'>" + PerData.firstName + " " + PerData.lastName + "!</br>";
+	if (score_interet != "")
+		PopCont += score_interet + "</br>";
+	else
+	{
+		PopCont += "De " + PerData.age + " ans.</br>";
+		PopCont += "Addresse : " + PerData.addr + "</br>";
+	}
+	PopCont += "" + info + "</div>";
 	PerMarker.bindPopup(PopCont);
 }
 
-function	aff_div()
+var info_us = 0;
+
+function	aff_div_us()
 {
-	if (info == 0)
+	if (info_us == 0)
 	{
-		var div_popup = document.getElementById("toto");
+		var div_popup = document.getElementById("info_plus_us");
 		div_popup.style.display = "block";
 		div_popup.style.overflow = "auto";
 		div_popup.style.height = "100px";
@@ -351,21 +368,21 @@ function	aff_div()
 		div_popup.style.padding = "3px 0px 0px 3px";
 		div_popup.style.border = "1px solid #C0C0C0";
 		div_popup.style.borderRadius = "5px 0px 0px 5px";
-		var div_popup1 = document.getElementById("toto1");
+		var div_popup1 = document.getElementById("aff_info_us");
 		div_popup1.style.display = "none";
-		info = 1;
+		info_us = 1;
 	}
 	else
 	{
-		var div_popup = document.getElementById("toto");
+		var div_popup = document.getElementById("info_plus_us");
 		div_popup.style.display = "none";
-		var div_popup1 = document.getElementById("toto1");
+		var div_popup1 = document.getElementById("aff_info_us");
 		div_popup1.style.display = "block";
-		info = 0;
+		info_us = 0;
 	}
 }
 
-function	New_info()
+function	New_info_us()
 {
 	var content = data();
 	var score = 0;
@@ -390,24 +407,9 @@ function	New_info()
 
 function onPClick(e)
 {
-	var score_interet = score_int();
-	if (!this.getPopup())
-	{
-		//var info = New_info_interet();
-		var info = "";
-		var Popuptot = "<div class='poi'>" + content.persons[0].firstName + " " + content.persons[0].lastName + "!</br>" +
-		"<div id='toto1' style='display: block;'> Cliquer pour + d'info !:)</div>" +
-		"<div id='toto' style='display: none'>" + info + "</div>" +
-		"<p>"+ score_interet +"</p></div></div>";
-		this.bindPopup(Popuptot).openPopup();
-		this.on('click',aff_div)
-	}
-	else
-	{
-		var the_pop = this.getPopup();
-		this.unbindPopup();
-		this.bindPopup(the_pop).openPopup();
-	}
+	var the_pop = this.getPopup();
+	this.unbindPopup();
+	this.bindPopup(the_pop).openPopup();
 }
 
 function onContClick(e)
@@ -416,13 +418,13 @@ function onContClick(e)
 	if (!this.getPopup())
 	{
 		var content = data();
-		var info = New_info();
+		var info_tot = New_info_us();
 		var Popuptot = "<div class='poi'>Bonjour " + content.persons[0].firstName + " " + content.persons[0].lastName + "!</br>" +
-		"<p>Note critere : "+ score_position +"/10</p>" + 
-		"<div id='toto1' style='display: block;'> Cliquer encore + d'info !:)</div>" +
-		"<div id='toto' style='display: none'>" + info + "</div>" + "</div>";
+		"<p>Note critere : "+ score_position +"/10</p>" +
+		"<div id='aff_info_us' style='display: block;'> Cliquer encore + d'info !:)</div>" +
+		"<div id='info_plus_us' style='display: none'>" + info_tot + "</div>" + "</div>";
 		this.bindPopup(Popuptot).openPopup();
-		this.on('click',aff_div)
+		this.on('click',aff_div_us)
 	}
 	else
 	{
