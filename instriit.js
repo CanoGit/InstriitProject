@@ -13,10 +13,10 @@ function	data()
 				"img":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAKbAAAAJDM3MDkxZjBhLTgwOGItNGJhOS1hMWZjLWYxODI5ODQ4OTM1YQ.jpg",
 				"critere":[
 				"ecole",
+				"parc",
 				"commisariat",
 				"banque",
-				"piscine",
-				"parc"],
+				"piscine"],
 				"interetCenter":[
 				"foot",
 				"music",
@@ -221,16 +221,25 @@ function	data()
 function	score_pos()
 {
 	var content = data();
+	var point = L.point(content.persons[0].lng, content.persons[0].lat);
 	var score = 0;
 	for (var i = 0; content.persons[0].critere[i] != undefined; i++)
 	{
 		critere_choix = content.persons[0].critere[i];
 		for (var j = 0; content.pos.critere_pos[j] != undefined; j++)
 		{
-			critere_pos = content.pos.critere_pos[j].type;
-			if (critere_pos == critere_choix)
+			if (critere_choix == content.pos.critere_pos[j].type)
 			{
-				score++;
+				for (var y = 0; content.pos[critere_choix][y] != undefined; y++)
+				{
+					var pointorther = L.point(content.pos[critere_choix][y].lng, content.pos[critere_choix][y].lat);
+					var dist_equal = point.distanceTo(pointorther);
+					if (dist_equal <= 0.0099)
+						{
+							score++;
+							break;
+						}
+				}
 			}
 		}
 	}
@@ -297,7 +306,8 @@ function CheckPersons(dataPers, map)
 	popupAnchor: [-3, -45]
 });
 	var marker = L.marker([dataPers[0].lng,dataPers[0].lat], {icon: ContIcon}).addTo(map);
-		marker.on("click", onContClick);
+	L.circle([dataPers[0].lng,dataPers[0].lat], 1000).addTo(map);
+	marker.on("click", onContClick);
 	for (var i = 1; i < dataPers.length; i++)
 	{
 		marker = L.marker([dataPers[i].lng,dataPers[i].lat], {icon: myIcon}).addTo(map);
@@ -370,6 +380,7 @@ function	aff_div_us()
 function	New_info_us()
 {
 	var content = data();
+	var point = L.point(content.persons[0].lng, content.persons[0].lat);
 	var score = 0;
 	var info = "";
 	for (var i = 0; content.persons[0].critere[i] != undefined; i++)
@@ -377,13 +388,21 @@ function	New_info_us()
 		critere_choix = content.persons[0].critere[i];
 		for (var j = 0; content.pos.critere_pos[j] != undefined; j++)
 		{
-			critere_pos = content.pos.critere_pos[j].type;
-			if (critere_pos == critere_choix)
+			if (critere_choix == content.pos.critere_pos[j].type)
 			{
-				var add = content.pos[critere_pos][0].add;
-				var name = content.pos[critere_pos][0].name;
-				var type = content.pos[critere_pos][0].type;
-				info += name + ",</br>" + critere_choix + ",</br>" + type + ",</br>" + add + ".</br></br>";
+				for (var y = 0; content.pos[critere_choix][y] != undefined; y++)
+				{
+					var pointorther = L.point(content.pos[critere_choix][y].lng, content.pos[critere_choix][y].lat);
+					var dist_equal = point.distanceTo(pointorther);
+					if (dist_equal <= 0.0099)
+						{
+							var add = content.pos[critere_choix][y].addr;
+							var name = content.pos[critere_choix][y].name;
+							var type = content.pos[critere_choix][y].type;
+							info += name + ",</br>" + type + ",</br>" + add + ".</br></br>";
+							break;
+						}
+				}
 			}
 		}
 	}
